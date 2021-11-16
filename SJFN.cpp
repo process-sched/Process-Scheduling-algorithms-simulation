@@ -67,7 +67,7 @@ struct comparitor
        return (p1.burstTime>p2.burstTime);
     }
 };
-int main()
+float *SJFN()
 {
 	vector<process> heapVector=inputFromCSV();
 	sort(heapVector.begin(),heapVector.end(),compare);
@@ -78,6 +78,17 @@ int main()
 	float responseTime[heapVector.size()]; 
 	float complete=heapVector[0].arrivalTime;
 	int len=heapVector.size();
+	for(itr=heapVector.begin();itr!=heapVector.end();itr++)
+	{
+		if(itr->cpuio=="I")
+		{
+			completionTime[itr->pid]=itr->arrivalTime+itr->burstTime;
+			responseTime[itr->pid]=0;
+			waitingTime[itr->pid]=0;
+			TAT[itr->pid]=itr->burstTime;
+			heapVector.erase(itr);
+		}
+	}
 	priority_queue<process, vector<process>, comparitor> minHeap;
 	minHeap.push(heapVector[0]);
 	heapVector.erase(heapVector.begin());
@@ -85,7 +96,6 @@ int main()
 	{
 		process temp=minHeap.top();
 		minHeap.pop();
-		
 		if(complete>=temp.arrivalTime)
 		{
 			responseTime[temp.pid]=complete-temp.arrivalTime;
@@ -133,5 +143,21 @@ int main()
     out.close();
 	system("python3 graphPloat.py");
 	remove("data.csv");
-  	return 0;
+	float *result=(float *)malloc(sizeof(float)*4);
+	for(int i=0;i<4;i++)
+	{
+		result[i]=0;
+	}
+	for(int i=0;i<len;i++)
+	{
+		result[0]+=completionTime[i];
+		result[1]+=TAT[i];
+		result[2]+=waitingTime[i];
+		result[3]+=responseTime[i];
+	}
+	for(int i=0;i<4;i++)
+	{
+		result[i]/=len;
+	}
+  	return result;
 }
