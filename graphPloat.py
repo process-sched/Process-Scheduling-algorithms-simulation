@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import sys
 data_file = open('data.csv')
 dataList = []
 for row in data_file:
@@ -14,10 +15,10 @@ plt.plot(process, completionTime)
 plt.plot(process, TAT)
 plt.plot(process, waitingTime)
 plt.plot(process, responseTime)
-plt.title('SJF')
+plt.title(sys.argv[2])
 plt.xlabel('Process')
 plt.ylabel('Time Taken')
 plt.legend(['CT','TAT','WT','RT'])
 plt.grid(True)
-plt.savefig("SJFN.jpeg",dpi=1000)
-plt.show()
+plt.savefig(sys.argv[1] ,dpi=1000)
+#plt.show()

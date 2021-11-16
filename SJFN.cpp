@@ -141,7 +141,7 @@ float *SJFN()
     copy( responseTime,responseTime+len, ostream_iterator<float>( out, "," ) );
     out<<endl;
     out.close();
-	system("python3 graphPloat.py");
+	system("python3 graphPloat.py SJFN.jpeg SJFN");
 	remove("data.csv");
 	float *result=(float *)malloc(sizeof(float)*4);
 	for(int i=0;i<4;i++)
