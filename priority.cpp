@@ -186,6 +186,5 @@ string output_file="data.csv";
     result[i] /= n;
   }
   return result;
-  return 0;
 }
 

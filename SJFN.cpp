@@ -76,7 +76,7 @@ float *SJFN()
 	float TAT[heapVector.size()];
 	float waitingTime[heapVector.size()];
 	float responseTime[heapVector.size()]; 
-	float complete=heapVector[0].arrivalTime;
+	float complete=0;
 	int len=heapVector.size();
 	for(itr=heapVector.begin();itr!=heapVector.end();itr++)
 	{
@@ -100,7 +100,7 @@ float *SJFN()
 		{
 			responseTime[temp.pid]=complete-temp.arrivalTime;
 			complete+=temp.burstTime;
-			completionTime[temp.pid]=complete+temp.burstTime;
+			completionTime[temp.pid]=complete;
 			TAT[temp.pid]=complete-temp.arrivalTime;
 			waitingTime[temp.pid]=TAT[temp.pid]-temp.burstTime;
 		}
@@ -109,6 +109,7 @@ float *SJFN()
 			responseTime[temp.pid]=0;
 			complete=temp.arrivalTime;
 			completionTime[temp.pid]=complete+temp.burstTime;
+			complete+=temp.burstTime;
 			TAT[temp.pid]=complete-temp.arrivalTime;
 			waitingTime[temp.pid]=TAT[temp.pid]-temp.burstTime;
 		}
