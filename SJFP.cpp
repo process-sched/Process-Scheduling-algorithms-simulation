@@ -22,9 +22,9 @@ float convertP(string word)
 	geek>>temp;
 	return temp;
 }
-vector<processP> inputFromCSVP()
+vector<processP> inputFromCSVP(string filename)
 {
-	ifstream inputFile("process.csv");
+	ifstream inputFile(filename);
 	string temp,word;
 	vector<processP> heapVector;
 	processP processPHold;
@@ -67,9 +67,9 @@ struct comparitorP
        return (p1.burstTime>p2.burstTime);
     }
 };
-float *SJFP()
+float *SJFP(string filename)
 {
-	vector<processP> heapVector=inputFromCSVP();
+	vector<processP> heapVector=inputFromCSVP(filename);
 	sort(heapVector.begin(),heapVector.end(),compareP);
 	float completionTime[heapVector.size()];
 	float TAT[heapVector.size()];
@@ -166,6 +166,7 @@ float *SJFP()
     out<<endl;
     out.close();
 	system("python3 graphPloat.py SJFP.jpeg SJFP");
+	system("python3 graphStackPlot.py SJFP_Stack.jpeg SJFP");
 	remove("data.csv");
 	float *result=(float *)malloc(sizeof(float)*4);
 	for(int i=0;i<4;i++)
