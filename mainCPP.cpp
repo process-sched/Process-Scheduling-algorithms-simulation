@@ -9,6 +9,8 @@
 #include "SJFP.cpp"
 #include "priority.cpp"
 #include "roundAndFcfs.cpp"
+#include "multilevel.cpp"
+#include "multilevel-feedback.cpp"
 int main(int argc, char **argv)
 {
 	if (argc != 2) 
@@ -24,6 +26,8 @@ int main(int argc, char **argv)
 	float *roundrobin_data_1=roundrobin(argv[1],1);
 	float *roundrobin_data_2=roundrobin(argv[1],2);
 	float *roundrobin_data_3=roundrobin(argv[1],3);
+	float *multilevel_feedback_data = multilevel_feedback(argv[1], 2, 3, 2);
+	float *multilevel_data = multilevel(argv[1], 2, 3);;
 	ofstream out( "data.csv",ios_base::app );
     copy( SJFNData,SJFNData+4, ostream_iterator<float>( out, "," ) );
     out<<endl;
@@ -40,6 +44,10 @@ int main(int argc, char **argv)
     copy( roundrobin_data_2,roundrobin_data_2+4, ostream_iterator<float>( out, "," ) );
     out<<endl;
     copy( roundrobin_data_3,roundrobin_data_3+4, ostream_iterator<float>( out, "," ) );
+    out<<endl;
+    copy( multilevel_feedback_data,multilevel_feedback_data+4, ostream_iterator<float>( out, "," ) );
+    out<<endl;
+    copy( multilevel_data,multilevel_data+4, ostream_iterator<float>( out, "," ) );
     out<<endl;
     out.close();
     system("python3 graphBarPloat.py");
