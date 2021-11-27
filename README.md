@@ -11,7 +11,7 @@
 
 ### Input format
 CSV file with each row having `PID,name,type,Priority,AT,BT`
-eg.
+<br>eg.
 ```
   0,P1,C,67,22,1
   1,P2,C,71,9,45
