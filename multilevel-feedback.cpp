@@ -83,7 +83,7 @@ public:
 	}
 
 	int get_response_time(){
-		return response_time;
+		return response_time - arrival_time;
 	}
 
 	int get_pid(){

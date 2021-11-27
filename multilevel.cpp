@@ -82,7 +82,7 @@ public:
 	}
 
 	int get_response_time(){
-		return response_time;
+		return response_time - arrival_time;
 	}
 
 	bool is_completed(){
