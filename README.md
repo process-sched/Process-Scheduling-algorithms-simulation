@@ -25,6 +25,6 @@ g++ -I /usr/include/python3.8 mainCPP.cpp
 ./a.out <inputFileName.csv>
 ```
 ### Output
-All the graphs will be saved inside the `./graph` folder 
+All the graphs will be saved inside `./graph` 
 
 
