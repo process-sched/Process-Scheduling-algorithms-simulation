@@ -20,7 +20,7 @@ CSV file with each row having `PID,name,type,Priority,AT,BT`
 
 ### Run instruction 
 ```
-mkdir graph
+mkdir -p graph
 g++ -I /usr/include/python3.8 mainCPP.cpp
 ./a.out <inputFileName.csv>
 ```
