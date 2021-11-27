@@ -190,10 +190,10 @@ float *priority_p(string input_file) {
     total_waiting_time += it->second.waiting_time;
     total_turnaround_time += it->second.turnaround_time;
      // to plot
-    completionTime[it->second.id - 1] = it->second.completion_time;
-    TAT[it->second.id - 1] = it->second.turnaround_time;
-    waitingTime[it->second.id - 1] = it->second.waiting_time;
-    responseTime[it->second.id - 1] = it->second.response_time;
+    completionTime[it->second.id] = it->second.completion_time;
+    TAT[it->second.id] = it->second.turnaround_time;
+    waitingTime[it->second.id] = it->second.waiting_time;
+    responseTime[it->second.id] = it->second.response_time;
     
   }
   /*
@@ -358,10 +358,10 @@ float *priority_np(string input_file) {
     total_waiting_time += it->second.waiting_time;
     total_turnaround_time += it->second.turnaround_time;
     //to plot
-    completionTime[it->second.id-1] = it->second.completion_time;
-    TAT[it->second.id-1] = it->second.turnaround_time;
-    waitingTime[it->second.id-1] = it->second.waiting_time;
-    responseTime[it->second.id-1] = it->second.response_time;
+    completionTime[it->second.id] = it->second.completion_time;
+    TAT[it->second.id] = it->second.turnaround_time;
+    waitingTime[it->second.id] = it->second.waiting_time;
+    responseTime[it->second.id] = it->second.response_time;
   }
   /* cout << "TAT: " << total_turnaround_time << endl;
   cout << "TWT: " << total_waiting_time << endl;
